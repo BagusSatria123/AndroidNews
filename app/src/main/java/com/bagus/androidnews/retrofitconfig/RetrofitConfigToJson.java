@@ -7,5 +7,6 @@ public class RetrofitConfigToJson {
     public static GetJsonAll getResponse(){
 
         return RetrofitInstance.getInstance(URL_API).create(GetJsonAll.class);
+
     }
 }
