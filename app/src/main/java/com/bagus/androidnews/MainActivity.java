@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     List<News> newsList;
     GetJsonAll getJsonAll;
+    String title,description;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<NewsList> call, Response<NewsList> response) {
                 Log.d("berhasil",response + "");
+
+                newsList = response.body().getArticles();
+
+                title = newsList.get(1).getTitle();
+                description = newsList.get(1).getDescription();
+                Log.d("titleBerita","Judul " + title + " " + "Deskriptis " + description);
             }
 
             @Override
