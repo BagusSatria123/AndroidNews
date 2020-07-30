@@ -22,7 +22,7 @@ public interface GetJsonAll {
     );
 
     @GET("v2/top-headlines")
-    Call<NewsList> getNewsListCategory(
+    Call<NewsList> getNewsList(
 
             @Query("country")
                     String country,
