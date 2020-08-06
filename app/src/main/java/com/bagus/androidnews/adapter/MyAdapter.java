@@ -1,16 +1,20 @@
 package com.bagus.androidnews.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bagus.androidnews.DetailBerita;
 import com.bagus.androidnews.R;
 import com.bagus.androidnews.retrofitjson.News;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -33,6 +37,7 @@ public class MyAdapter extends RecyclerView.Adapter {
         private ImageView img;
         private TextView title;
         private ImageLoader imageLoader;
+        private LinearLayout click;
 
         public MyClassAdapter(@NonNull View itemView) {
             super(itemView);
@@ -40,6 +45,8 @@ public class MyAdapter extends RecyclerView.Adapter {
             img = itemView.findViewById(R.id.img);
             title = itemView.findViewById(R.id.title);
             imageLoader = ImageLoader.getInstance();
+            click = itemView.findViewById(R.id.click);
+
         }
     }
 
@@ -52,7 +59,7 @@ public class MyAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
 
         ((MyClassAdapter) viewHolder).title.setText(newsList.get(i).getTitle());
         ImageLoaderConfiguration configuration = new ImageLoaderConfiguration.Builder(context)
@@ -62,6 +69,16 @@ public class MyAdapter extends RecyclerView.Adapter {
 
         ((MyClassAdapter) viewHolder).imageLoader.init(configuration);
         ((MyClassAdapter) viewHolder).imageLoader.displayImage(newsList.get(i).getUrlToImage(), ((MyClassAdapter) viewHolder).img);
+        ((MyClassAdapter) viewHolder).click.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,"Telah di click "+newsList.get(i).getTitle(),Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(context, DetailBerita.class);
+                intent.putExtra("title",newsList.get(i).getTitle());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
 
     }
 
