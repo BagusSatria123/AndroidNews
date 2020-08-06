@@ -37,10 +37,11 @@ public class MainActivity extends AppCompatActivity {
         recycler_view = findViewById(R.id.recycler_view);
         gm = new GridLayoutManager(this,1);
         recycler_view.setLayoutManager(gm);
+        newsList = new ArrayList<>();
         myAdapter = new MyAdapter(this,newsList);
         recycler_view.setAdapter(myAdapter);
 
-        newsList = new ArrayList<>();
+
         getJsonAll = RetrofitConfigToJson.getResponse();
 
 
@@ -51,9 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
                 newsList = response.body().getArticles();
 
-                title = newsList.get(1).getTitle();
-                description = newsList.get(1).getDescription();
-                Log.d("titleBerita","Judul " + title + " " + "Deskriptis " + description);
+//                title = newsList.get(1).getTitle();
+//                description = newsList.get(1).getDescription();
+//                Log.d("titleBerita","Judul " + title + " " + "Deskriptis " + description);
 
                 myAdapter = new MyAdapter(getApplicationContext(),newsList);
                 recycler_view.setAdapter(myAdapter);
