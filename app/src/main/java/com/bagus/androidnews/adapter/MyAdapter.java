@@ -75,6 +75,8 @@ public class MyAdapter extends RecyclerView.Adapter {
                 Toast.makeText(context,"Telah di click "+newsList.get(i).getTitle(),Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(context, DetailBerita.class);
                 intent.putExtra("title",newsList.get(i).getTitle());
+                intent.putExtra("urlToImage",newsList.get(i).getUrlToImage());
+                intent.putExtra("content",newsList.get(i).getContent());
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
