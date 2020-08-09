@@ -77,6 +77,7 @@ public class MyAdapter extends RecyclerView.Adapter {
                 intent.putExtra("title",newsList.get(i).getTitle());
                 intent.putExtra("urlToImage",newsList.get(i).getUrlToImage());
                 intent.putExtra("content",newsList.get(i).getContent());
+                intent.putExtra("url",newsList.get(i).getUrl());
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }

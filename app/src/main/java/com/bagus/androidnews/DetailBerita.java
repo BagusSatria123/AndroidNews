@@ -16,7 +16,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 public class DetailBerita extends AppCompatActivity {
 
-    String title,image,content;
+    String title,image,content,url;
     TextView titles;
     ImageView images;
     WebView webku;
@@ -37,17 +37,21 @@ public class DetailBerita extends AppCompatActivity {
         title = getIntent().getStringExtra("title");
         image = getIntent().getStringExtra("urlToImage");
         content = getIntent().getStringExtra("content");
+        url = getIntent().getStringExtra("url");
 
-        Log.d("Titleku",title);
-        Toast.makeText(getApplicationContext(),"Anda telah klick "+title,Toast.LENGTH_LONG).show();
-        titles.setText(title);
-        configuration = new ImageLoaderConfiguration.Builder(this)
-                .threadPriority(Thread.NORM_PRIORITY - 2)
-                .denyCacheImageMultipleSizesInMemory()
-                .build();
-        loader.init(configuration);
-        loader.displayImage(image,images);
-        webku.loadData(content,"text/html","utf-8");
+//        Log.d("Titleku",title);
+//        Toast.makeText(getApplicationContext(),"Anda telah klick "+title,Toast.LENGTH_LONG).show();
+//        titles.setText(title);
+//        configuration = new ImageLoaderConfiguration.Builder(this)
+//                .threadPriority(Thread.NORM_PRIORITY - 2)
+//                .denyCacheImageMultipleSizesInMemory()
+//                .build();
+//        loader.init(configuration);
+//        loader.displayImage(image,images);
+//        webku.loadData(content,"text/html","utf-8");
+//        webku.setWebViewClient(new WebViewClient());
+
+        webku.loadUrl(url);
         webku.setWebViewClient(new WebViewClient());
 
     }
