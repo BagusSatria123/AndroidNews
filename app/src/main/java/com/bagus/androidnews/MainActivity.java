@@ -25,13 +25,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
-    List<News> newsList;
-    GetJsonAll getJsonAll;
-    String title,description;
 
-    RecyclerView recycler_view;
-    MyAdapter myAdapter;
-    GridLayoutManager gm;
     BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
