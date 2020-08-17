@@ -35,39 +35,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         bottomNavigationView = findViewById(R.id.bottom);
 
-        /*recycler_view = findViewById(R.id.recycler_view);
-        gm = new GridLayoutManager(this,1);
-        recycler_view.setLayoutManager(gm);
-        newsList = new ArrayList<>();
-        myAdapter = new MyAdapter(this,newsList);
-        recycler_view.setAdapter(myAdapter);
 
-
-        getJsonAll = RetrofitConfigToJson.getResponse();
-
-
-        getJsonAll.getNewsList("id","4e9e26cdfe464bb29a42c681c2c5089b").enqueue(new Callback<NewsList>() {
-            @Override
-            public void onResponse(Call<NewsList> call, Response<NewsList> response) {
-                Log.d("berhasil",response + "");
-
-                newsList = response.body().getArticles();
-
-//                title = newsList.get(1).getTitle();
-//                description = newsList.get(1).getDescription();
-//                Log.d("titleBerita","Judul " + title + " " + "Deskriptis " + description);
-
-                myAdapter = new MyAdapter(getApplicationContext(),newsList);
-                recycler_view.setAdapter(myAdapter);
-                myAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFailure(Call<NewsList> call, Throwable t) {
-
-                Log.d("gagal",t + "");
-            }
-        });*/
     }
 
     @Override

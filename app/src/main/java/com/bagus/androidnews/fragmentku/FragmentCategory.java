@@ -9,10 +9,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bagus.androidnews.R;
+
 public class FragmentCategory extends Fragment {
+
+    View view;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+
+        view = inflater.inflate(R.layout.fragment_category, container,false);
+
+        return view;
     }
 }
