@@ -2,6 +2,7 @@ package com.bagus.androidnews;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,6 +11,9 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.bagus.androidnews.adapter.MyAdapter;
+import com.bagus.androidnews.fragmentku.FragmentAbout;
+import com.bagus.androidnews.fragmentku.FragmentCategory;
+import com.bagus.androidnews.fragmentku.FragmentHome;
 import com.bagus.androidnews.retrofitconfig.GetJsonAll;
 import com.bagus.androidnews.retrofitconfig.RetrofitConfigToJson;
 import com.bagus.androidnews.retrofitjson.News;
@@ -34,12 +38,37 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
         bottomNavigationView = findViewById(R.id.bottom);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
+        fragmentClick(new FragmentHome());
 
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        int userId = menuItem.getItemId();
+        Fragment fragment =null;
+
+        switch (userId){
+            case R.id.home:
+                fragment = new FragmentHome();
+                break;
+
+            case R.id.category:
+                fragment = new FragmentCategory();
+                break;
+
+            case R.id.about:
+                fragment = new FragmentAbout();
+                break;
+        }
+        return fragmentClick(fragment);
+    }
+
+    private boolean fragmentClick(Fragment fragment){
+        if(fragment != null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.ganti,fragment).commit();
+        }
         return false;
     }
 }

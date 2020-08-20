@@ -19,8 +19,8 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom"
-            android:background="#076"
-            app:itemIconTint="#"
+            android:background="#000"
+            app:itemIconTint="#fff"
             app:itemTextColor="#ffffff"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
