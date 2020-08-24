@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".DetailBerita"/>
+        <activity android:name=".CategoryDetail"/>
     </application>
 
 </manifest>
