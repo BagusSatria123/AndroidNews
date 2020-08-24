@@ -18,6 +18,26 @@ public class CategoryDetail extends AppCompatActivity {
         category_detail=findViewById(R.id.category_detail);
 
         business=getIntent().getStringExtra("business");
-        category_detail.setText(business);
+
+        switch (business){
+            case "business":
+                category_detail.setText(business);
+                break;
+            case "entertainment":
+                category_detail.setText(business);
+                break;
+            case "health":
+                category_detail.setText(business);
+                break;
+            case "science":
+                category_detail.setText(business);
+                break;
+            case "sports":
+                category_detail.setText(business);
+                break;
+            case "technology":
+                category_detail.setText(business);
+                break;
+        }
     }
 }

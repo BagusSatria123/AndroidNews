@@ -44,7 +44,7 @@ public class FragmentCategory extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), CategoryDetail.class);
-                intent.putExtra("entertainment","entertainment");
+                intent.putExtra("business","entertainment");
                 startActivity(intent);
             }
         });
@@ -53,7 +53,7 @@ public class FragmentCategory extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), CategoryDetail.class);
-                intent.putExtra("health","health");
+                intent.putExtra("business","health");
                 startActivity(intent);
             }
         });
@@ -62,7 +62,7 @@ public class FragmentCategory extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), CategoryDetail.class);
-                intent.putExtra("science","science");
+                intent.putExtra("business","science");
                 startActivity(intent);
             }
         });
@@ -71,7 +71,7 @@ public class FragmentCategory extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), CategoryDetail.class);
-                intent.putExtra("sports","sports");
+                intent.putExtra("business","sports");
                 startActivity(intent);
             }
         });
@@ -80,7 +80,7 @@ public class FragmentCategory extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), CategoryDetail.class);
-                intent.putExtra("technology","technology");
+                intent.putExtra("business","technology");
                 startActivity(intent);
             }
         });
