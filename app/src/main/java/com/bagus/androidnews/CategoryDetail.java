@@ -7,7 +7,10 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.bagus.androidnews.adapter.MyAdapter;
 import com.bagus.androidnews.retrofitconfig.GetJsonAll;
 import com.bagus.androidnews.retrofitconfig.RetrofitConfigToJson;
 import com.bagus.androidnews.retrofitjson.News;
@@ -22,18 +25,24 @@ import retrofit2.Response;
 
 public class CategoryDetail extends AppCompatActivity {
 
-    TextView category_detail;
+    RecyclerView category_detail;
     String business;
+    GridLayoutManager gm;
+    MyAdapter adapter;
 
-    GetJsonAll getJsonAll;
-    List<News> news;
+    GetJsonAll getJsonAll;List<News> news;
+
     String title;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.category_detail);
-        category_detail=findViewById(R.id.category_detail);
+
+        category_detail=findViewById(R.id.recycler_detail);
+        gm = new GridLayoutManager(this,1);
+        category_detail.setLayoutManager(gm);
+        adapter = new MyAdapter(this,news);
 
         business=getIntent().getStringExtra("business");
         news = new ArrayList<>();
@@ -84,6 +93,10 @@ public class CategoryDetail extends AppCompatActivity {
                 title = news.get(0).getTitle();
 
                 Log.d("titleKu",title + "");
+
+                adapter = new MyAdapter(getApplicationContext(),news);
+                category_detail.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
 
             }
 
