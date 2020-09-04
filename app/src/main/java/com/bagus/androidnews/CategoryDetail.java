@@ -2,6 +2,7 @@ package com.bagus.androidnews;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import com.bagus.androidnews.retrofitconfig.GetJsonAll;
 import com.bagus.androidnews.retrofitconfig.RetrofitConfigToJson;
 import com.bagus.androidnews.retrofitjson.News;
 import com.bagus.androidnews.retrofitjson.NewsList;
+import com.github.ybq.android.spinkit.SpinKitView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,10 +36,14 @@ public class CategoryDetail extends AppCompatActivity {
 
     String title;
 
+    SpinKitView spinKitView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.category_detail);
+
+        spinKitView = findViewById(R.id.spin_kit);
 
         category_detail=findViewById(R.id.recycler_detail);
         gm = new GridLayoutManager(this,1);
@@ -89,15 +95,20 @@ public class CategoryDetail extends AppCompatActivity {
 
                 Log.d("berhasil",response + "");
 
-                news = response.body().getArticles();
-                title = news.get(0).getTitle();
+                spinKitView.setVisibility(View.VISIBLE);
 
-                Log.d("titleKu",title + "");
+                if (response.isSuccessful()){
+                    spinKitView.setVisibility(View.GONE);
+                    news = response.body().getArticles();
+                    title = news.get(0).getTitle();
 
-                adapter = new MyAdapter(getApplicationContext(),news);
-                category_detail.setAdapter(adapter);
-                adapter.notifyDataSetChanged();
+                    Log.d("titleKu",title + "");
 
+                    adapter = new MyAdapter(getApplicationContext(),news);
+                    category_detail.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+
+                }
             }
 
             @Override

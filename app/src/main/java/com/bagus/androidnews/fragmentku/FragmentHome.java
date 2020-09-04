@@ -18,6 +18,7 @@ import com.bagus.androidnews.retrofitconfig.GetJsonAll;
 import com.bagus.androidnews.retrofitconfig.RetrofitConfigToJson;
 import com.bagus.androidnews.retrofitjson.News;
 import com.bagus.androidnews.retrofitjson.NewsList;
+import com.github.ybq.android.spinkit.SpinKitView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,10 +39,12 @@ public class FragmentHome extends Fragment {
 
     View view;
 
+    SpinKitView spinKitView;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home,container,false);
+        spinKitView = view.findViewById(R.id.spin_kit);
 
         recycler_view = view.findViewById(R.id.recycler_view);
         gm = new GridLayoutManager(getContext(),1);
@@ -59,15 +62,20 @@ public class FragmentHome extends Fragment {
             public void onResponse(Call<NewsList> call, Response<NewsList> response) {
                 Log.d("berhasil",response + "");
 
-                newsList = response.body().getArticles();
+                spinKitView.setVisibility(View.VISIBLE);
+                if(response.isSuccessful()){
+                    spinKitView.setVisibility(View.GONE);
 
-                title = newsList.get(1).getTitle();
-                description = newsList.get(1).getDescription();
-                Log.d("titleBerita","Judul " + title + " " + "Deskriptis " + description);
+                    newsList = response.body().getArticles();
 
-                myAdapter = new MyAdapter(getContext(),newsList);
-                recycler_view.setAdapter(myAdapter);
-                myAdapter.notifyDataSetChanged();
+                    title = newsList.get(1).getTitle();
+                    description = newsList.get(1).getDescription();
+                    Log.d("titleBerita","Judul " + title + " " + "Deskriptis " + description);
+
+                    myAdapter = new MyAdapter(getContext(),newsList);
+                    recycler_view.setAdapter(myAdapter);
+                    myAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#fff">
+    android:background="#070606">
 
     <LinearLayout
         android:id="@+id/click"
@@ -14,12 +14,13 @@
             app:cardUseCompatPadding="true"
             app:cardCornerRadius="5dp"
             app:cardElevation="5dp"
+            android:background="#070606"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             
             <LinearLayout
                 android:orientation="vertical"
-                android:background="#fff"
+                android:background="#050505"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -33,6 +34,7 @@
                 <TextView
                     android:id="@+id/title"
                     android:text="@string/app_name"
+                    android:textColor="#fff"
                     android:textSize="20dp"
                     android:textStyle="normal"
                     android:layout_width="match_parent"
