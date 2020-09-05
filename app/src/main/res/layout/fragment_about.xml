@@ -1,20 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#0A0A0A">
     
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ABOUT"
+            android:text="Name : Bagus Satria"
             android:layout_centerInParent="true"
             android:textSize="24dp"
-            android:textColor="#000"
+            android:textColor="#ffffff"
             android:gravity="center_horizontal"/>
-    </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tinggal : Bumi"
+            android:layout_centerInParent="true"
+            android:textSize="24dp"
+            android:textColor="#ffffff"
+            android:gravity="center_horizontal"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Status : Mahasiswa"
+            android:layout_centerInParent="true"
+            android:textSize="24dp"
+            android:textColor="#ffffff"
+            android:gravity="center_horizontal"/>
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
